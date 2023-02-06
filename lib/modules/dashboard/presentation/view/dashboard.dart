@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:land_gov_flutter/common_widgets/custom_appbar.dart';
-import 'package:land_gov_flutter/utils/app_color.dart';
 import 'package:land_gov_flutter/utils/app_layout.dart';
-
-import '../../../../common_widgets/custom_forum_card.dart';
+import '../widget/forum_card.dart';
 import '../widget/latest_publication.dart';
 import '../widget/top_readed_blog.dart';
 
@@ -29,7 +26,7 @@ class DashBoard extends StatelessWidget {
               SizedBox(height: AppLayout.getHeight(16)),
               topReadedBlog(),
               SizedBox(height: AppLayout.getHeight(16)),
-              CustomForumCard(),
+              ForumCard(),
             ],
           ),
         ));

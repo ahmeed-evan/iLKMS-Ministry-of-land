@@ -17,7 +17,7 @@ class CustomIconButton extends StatelessWidget {
       icon: Icon(icondata, color: color),
       label: Text(
         labelText!,
-        style: AppStyle.normal_text.copyWith(color: color),
+        style: AppStyle.small_text.copyWith(color: color),
       ),
       onPressed: () {},
     );

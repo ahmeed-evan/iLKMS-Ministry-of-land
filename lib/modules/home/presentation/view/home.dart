@@ -5,6 +5,8 @@ import 'package:land_gov_flutter/modules/chat_bot/presentation/view/chat_screen.
 import 'package:land_gov_flutter/modules/dashboard/presentation/view/dashboard.dart';
 import 'package:land_gov_flutter/modules/forum/presentation/view/forum.dart';
 import 'package:land_gov_flutter/modules/profile/presentation/view/profile.dart';
+import 'package:land_gov_flutter/utils/app_color.dart';
+import 'package:land_gov_flutter/utils/app_string.dart';
 
 import '../../../../common_widgets/custom_sidebar.dart';
 import '../../../ebook/presentation/view/ebook.dart';
@@ -16,7 +18,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List pages = [DashBoard(), Ebook(), Blog(), Forum()];
-  final appbarTitle = <String>["DashBoard", "Ebook", "Blog", "Forum"];
+  final appbarTitle = <String>[AppString.home, AppString.ebook, AppString.blog, AppString.forum];
   int currentIndex = 0;
 
   void onTap(int index) {
@@ -35,26 +37,28 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: BottomNavigationBar(
           elevation: 5,
           onTap: onTap,
+          backgroundColor: AppColor.custom_blue,
+          type: BottomNavigationBarType.fixed,
           currentIndex: currentIndex,
           selectedItemColor: Colors.black,
-          showSelectedLabels: false,
+          showSelectedLabels: true,
           unselectedItemColor: Colors.grey.shade400,
           showUnselectedLabels: false,
           items: [
             BottomNavigationBarItem(
-              label: "Home",
+              label: AppString.home,
               icon: Icon(Icons.home_filled),
             ),
             BottomNavigationBarItem(
-              label: "Ebook",
+              label: AppString.ebook,
               icon: Icon(Icons.auto_stories_outlined),
             ),
             BottomNavigationBarItem(
-              label: "Blog",
+              label: AppString.blog,
               icon: Icon(Icons.post_add),
             ),
             BottomNavigationBarItem(
-              label: "Forum",
+              label: AppString.forum,
               icon: Icon(Icons.chat),
             ),
             // BottomNavigationBarItem(

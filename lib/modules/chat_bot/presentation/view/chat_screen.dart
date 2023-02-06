@@ -2,6 +2,7 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_dialogflow/dialogflow_v2.dart';
 // import 'package:intl/intl.dart';
+// import 'package:land_gov_flutter/utils/app_color.dart';
 //
 // class ChatScreen extends StatefulWidget {
 //   const ChatScreen({Key? key}) : super(key: key);
@@ -13,9 +14,9 @@
 // class _ChatScreenState extends State<ChatScreen> {
 //   void response(query) async {
 //     AuthGoogle authGoogle =
-//     await AuthGoogle(fileJson: "assets/credential.json").build();
+//         await AuthGoogle(fileJson: "assets/credential.json").build();
 //     Dialogflow dialogflow =
-//     Dialogflow(authGoogle: authGoogle, language: Language.english);
+//         Dialogflow(authGoogle: authGoogle, language: Language.english);
 //     AIResponse aiResponse = await dialogflow.detectIntent(query);
 //     setState(() {
 //       messsages.insert(0, {
@@ -31,11 +32,6 @@
 //   @override
 //   Widget build(BuildContext context) {
 //     return Scaffold(
-//       appBar: AppBar(
-//         title: Text(
-//           "Chat bot",
-//         ),
-//       ),
 //       body: Container(
 //         child: Column(
 //           children: <Widget>[
@@ -50,10 +46,9 @@
 //                 child: ListView.builder(
 //                     reverse: true,
 //                     itemCount: messsages.length,
-//                     itemBuilder: (context, index) =>
-//                         chat(
-//                             messsages[index]["message"].toString(),
-//                             messsages[index]["data"]))),
+//                     itemBuilder: (context, index) => chat(
+//                         messsages[index]["message"].toString(),
+//                         messsages[index]["data"]))),
 //             SizedBox(
 //               height: 20,
 //             ),
@@ -65,10 +60,11 @@
 //               child: ListTile(
 //                 leading: IconButton(
 //                   icon: Icon(
-//                     Icons.camera_alt,
-//                     color: Colors.greenAccent,
+//                     Icons.mic,
+//                     color: AppColor.custom_blue,
 //                     size: 35,
-//                   ), onPressed: () {},
+//                   ),
+//                   onPressed: () {},
 //                 ),
 //                 title: Container(
 //                   height: 35,
@@ -96,7 +92,7 @@
 //                     icon: Icon(
 //                       Icons.send,
 //                       size: 30.0,
-//                       color: Colors.greenAccent,
+//                       color: AppColor.custom_blue,
 //                     ),
 //                     onPressed: () {
 //                       if (messageInsert.text.isEmpty) {
@@ -132,16 +128,22 @@
 //       padding: EdgeInsets.only(left: 20, right: 20),
 //       child: Row(
 //         mainAxisAlignment:
-//         data == 1 ? MainAxisAlignment.end : MainAxisAlignment.start,
+//             data == 1 ? MainAxisAlignment.end : MainAxisAlignment.start,
 //         children: [
 //           data == 0
 //               ? Container(
-//             height: 60,
-//             width: 60,
-//             child: CircleAvatar(
-//               backgroundImage: AssetImage("assets/robot.jpg"),
-//             ),
-//           )
+//                   height: 60,
+//                   width: 60,
+//                   child: ClipOval(
+//                     child: SizedBox.fromSize(
+//                       size: Size.fromRadius(30), // Image radius
+//                       child: Image.asset(
+//                         "assets/robo_logo.png",
+//                         fit: BoxFit.fill,
+//                       ),
+//                     ),
+//                   ),
+//                 )
 //               : Container(),
 //           Padding(
 //             padding: EdgeInsets.all(10.0),
@@ -161,30 +163,28 @@
 //                       ),
 //                       Flexible(
 //                           child: Container(
-//                             constraints: BoxConstraints(maxWidth: 200),
-//                             child: Text(
-//                               message,
-//                               style: TextStyle(
-//                                   color: Colors.white,
-//                                   fontWeight: FontWeight.bold),
-//                             ),
-//                           ))
+//                         constraints: BoxConstraints(maxWidth: 200),
+//                         child: Text(
+//                           message,
+//                           style: TextStyle(
+//                               color: Colors.white, fontWeight: FontWeight.bold),
+//                         ),
+//                       ))
 //                     ],
 //                   ),
 //                 )),
 //           ),
 //           data == 1
 //               ? Container(
-//             height: 60,
-//             width: 60,
-//             child: CircleAvatar(
-//               backgroundImage: AssetImage("assets/default.jpg"),
-//             ),
-//           )
+//                   height: 60,
+//                   width: 60,
+//                   child: CircleAvatar(
+//                     backgroundImage: AssetImage("assets/pro_pic.png"),
+//                   ),
+//                 )
 //               : Container(),
 //         ],
 //       ),
 //     );
 //   }
 // }
-//

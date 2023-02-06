@@ -4,6 +4,10 @@ class AppString {
   static const String appbar_text =
       "ইন্টেলিজেন্ট ল্যান্ড নলেজ \nম্যানেজমেন্ট সিস্টেম";
   static const String app_name = "ভূমিবিদ";
+  static const String home = "নাগরিক কর্নার";
+  static const String ebook = "ই-বুক";
+  static const String blog = "ব্লগ";
+  static const String forum = "ফোরাম";
   static const String recent_publication = "সর্বশেষ প্রকাশনা";
   static const String top_readed_blog = "সর্বাধিক পঠিত ব্লগ";
   static const String discussed_forum = "আলোচিত ফোরাম";

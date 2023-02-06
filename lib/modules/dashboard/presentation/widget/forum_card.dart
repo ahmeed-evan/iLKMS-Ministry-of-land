@@ -1,35 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:land_gov_flutter/common_widgets/custom_icon_button.dart';
 
-import '../utils/app_color.dart';
-import '../utils/app_layout.dart';
-import '../utils/app_string.dart';
-import '../utils/app_style.dart';
+import '../../../../utils/app_color.dart';
+import '../../../../utils/app_layout.dart';
+import '../../../../utils/app_string.dart';
+import '../../../../utils/app_style.dart';
 
-class CustomForumCard extends StatelessWidget {
+class ForumCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        vertical: AppLayout.getHeight(12),
-        horizontal: AppLayout.getWidth(20),
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColor.bg_white,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.grey),
-        ),
-        child: _forumBody(),
-      ),
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.white, borderRadius: BorderRadius.circular(6)),
+      child: _forumBody(),
     );
   }
 
   _forumBody() {
-    return Container(
-      padding: EdgeInsets.symmetric(
-          vertical: AppLayout.getHeight(8), horizontal: AppLayout.getWidth(12)),
-      child: _forumCard(),
+    return Column(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+              color: AppColor.custom_blue,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(6), topRight: Radius.circular(6))),
+          padding: EdgeInsets.symmetric(
+              vertical: AppLayout.getHeight(8),
+              horizontal: AppLayout.getWidth(12)),
+          width: double.maxFinite,
+          child: Text(AppString.discussed_forum, style: AppStyle.large_text),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(
+              vertical: AppLayout.getHeight(8),
+              horizontal: AppLayout.getWidth(12)),
+          child: _forumCard(),
+        ),
+      ],
     );
   }
 
