@@ -34,89 +34,39 @@ class CustomForumCard extends StatelessWidget {
   }
 
   _forumCard() {
-    return Column(
+    return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            _profilePicture(),
-            SizedBox(width: AppLayout.getWidth(8)),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _name(),
-                _postedDate(),
-              ],
-            ),
-            const Spacer(),
-            _followButton(),
-          ],
+        Image.asset("assets/question_icon_forum.png",
+            fit: BoxFit.contain,
+            height: AppLayout.getHeight(32), width: AppLayout.getWidth(32)),
+        SizedBox(width: AppLayout.getWidth(8)),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _questionTitle(),
+              _questionerInfo(),
+              SizedBox(height: AppLayout.getHeight(8)),
+              _tags(),
+              SizedBox(height: AppLayout.getHeight(8)),
+              _forumInfoCount(),
+            ],
+          ),
         ),
-        SizedBox(height: AppLayout.getHeight(16)),
-        _discussionTitle(),
-        SizedBox(height: AppLayout.getHeight(8)),
-        _shortDiscussion(),
-        SizedBox(height: AppLayout.getHeight(16)),
-        _tags(),
-        SizedBox(height: AppLayout.getHeight(16)),
-        _forumInfoCounterLayout(),
       ],
     );
   }
 
-  _profilePicture() {
-    return ClipOval(
-      child: SizedBox.fromSize(
-        size: Size.fromRadius(30), // Image radius
-        child: Image.asset(
-          "assets/pro_pic.png",
-          fit: BoxFit.fill,
-        ),
-      ),
-    );
+  _questionTitle() {
+    return Text("ভূমি ই-নামজারী করার পদ্ধতি সম্পর্কে জানতে চাই। বিস্তারিত",
+        style: AppStyle.large_text, overflow: TextOverflow.ellipsis);
   }
 
-  _name() {
-    return Text(
-      "User Name",
-      style: AppStyle.normal_text,
-    );
-  }
-
-  _postedDate() {
-    return Text(
-      "28-12-2023",
-      style: AppStyle.small_text,
-    );
-  }
-
-  _followButton() {
-    return SizedBox(
-        height: 24,
-        child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColor.custom_blue,
-            ),
-            onPressed: () {},
-            child: Text(
-              AppString.follow,
-              style: AppStyle.small_text,
-            )));
-  }
-
-  _discussionTitle() {
-    return Text(
-      "ভূমি ই-নামজারী করার পদ্ধতি।",
-      style: AppStyle.normal_text.copyWith(fontWeight: FontWeight.bold),
-      overflow: TextOverflow.ellipsis,
-    );
-  }
-
-  _shortDiscussion() {
-    return Text("ভূমি ই-নামজারী করার পদ্ধতি। ভূমি ই-নামজারী করার পদ্ধতি। "
-        "ভূমি ই-নামজারী করার পদ্ধতি। ভূমি ই-নামজারী করার পদ্ধতি।");
+  _questionerInfo() {
+    return Text("প্রশ্নকারী: সাদিয়া আফরিন ",
+        style: AppStyle.normal_text, overflow: TextOverflow.ellipsis);
   }
 
   _tags() {
@@ -125,7 +75,7 @@ class CustomForumCard extends StatelessWidget {
       child: ListView.separated(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
-        itemCount: 5,
+        itemCount: 3,
         itemBuilder: (context, index) => Container(
           padding: EdgeInsets.symmetric(
             vertical: AppLayout.getHeight(4),
@@ -134,7 +84,7 @@ class CustomForumCard extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: AppColor.custom_blue),
-          child: Text("ভূমি ", style: AppStyle.small_text),
+          child: Text("# ভূমি ", style: AppStyle.small_text),
         ),
         separatorBuilder: (BuildContext context, int index) =>
             SizedBox(width: AppLayout.getWidth(8)),
@@ -142,39 +92,15 @@ class CustomForumCard extends StatelessWidget {
     );
   }
 
-  _forumInfoCounterLayout() {
+  _forumInfoCount() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        _forumVote(),
-        _forumComment(),
-        const Spacer(),
-        _totalVoteCounter(),
-      ],
-    );
-  }
-
-  _forumVote() {
-    return CustomIconButton(icondata: Icons.star_border_outlined);
-  }
-
-  _forumComment() {
-    return CustomIconButton(icondata: Icons.chat_bubble_outline);
-  }
-
-  _totalVoteCounter() {
-    return Column(
-      children: [
-        Text("23",
-            style: AppStyle.title_text.copyWith(
-              fontWeight: FontWeight.bold,
-              letterSpacing: 3,
-            )),
-        Text(
-          AppString.total_voted,
-          style: AppStyle.small_text,
-        ),
+        Text("উত্তর: 5",
+            style: AppStyle.normal_text, overflow: TextOverflow.ellipsis),
+        SizedBox(width: AppLayout.getWidth(16)),
+        Text("দেখেছে: 25",
+            style: AppStyle.normal_text, overflow: TextOverflow.ellipsis)
       ],
     );
   }

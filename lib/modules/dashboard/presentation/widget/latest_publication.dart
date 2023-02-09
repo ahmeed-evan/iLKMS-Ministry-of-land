@@ -8,7 +8,7 @@ import 'dart:math' as math;
 Widget latestPublication() {
   return Container(
     decoration: BoxDecoration(
-        color: Colors.white, borderRadius: BorderRadius.circular(6)),
+        color: Colors.white, borderRadius: BorderRadius.circular(6),border: Border.all(color: Colors.blue,width: 1)),
     child: _publicationBody(),
   );
 }

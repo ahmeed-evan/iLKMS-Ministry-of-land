@@ -10,7 +10,7 @@ import '../../../../utils/app_style.dart';
 Widget topReadedBlog() {
   return Container(
     decoration: BoxDecoration(
-        color: Colors.white, borderRadius: BorderRadius.circular(6)),
+        color: Colors.white, borderRadius: BorderRadius.circular(6),border: Border.all(color: Colors.blue,width: 1)),
     child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       _title(),
       Padding(
@@ -21,12 +21,20 @@ Widget topReadedBlog() {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ExpandedText(
-                text:
-                    "বড় বড় গ্রামীণ পরিবার বা জমির মালিকদের সম্পদ ও আয় বৃদ্ধি পাচ্ছে, নানা ধরনের কাজের সঙ্গে জড়িয়ে পড়ছেন তাঁরা। জমির ইজারা দিয়ে তাঁরা অর্থ পাচ্ছেন, তাঁরাই আবার রাইস মিল দিচ্ছেন, শহরে বাড়ি-গাড়ি কিনছেন। আরেক দিকে গ্রামীণ সমাজের একদম নিম্নবিত্ত মানুষের জীবনেও ব ৈচিত্র্য আসছে। শুধু কৃষিশ্রমিক হিসেবে কাজ করে তাঁদের আর পোষাচ্ছে না। তাঁরা শহরে যাচ্ছেন, বিভিন্ন ধরনের কাজে যুক্ত হচ্ছেন। তবে মধ্যম শ্রেণির জীবনে বিশেষ পরিবর্তন আসেনি। "
-                    "বড় বড় গ্রামীণ পরিবার বা জমির মালিকদের সম্পদ ও আয় বৃদ্ধি পাচ্ছে, নানা ধরনের কাজের সঙ্গে জড়িয়ে পড়ছেন তাঁরা। জমির ইজারা দিয়ে তাঁরা অর্থ পাচ্ছেন, তাঁরাই আবার রাইস মিল দিচ্ছেন, শহরে বাড়ি-গাড়ি কিনছেন। "),
-            SizedBox(height: AppLayout.getHeight(8)),
             _blogImage(),
+            SizedBox(height: AppLayout.getHeight(8)),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(child: _blogTitle()),
+                _followButton(),
+              ],
+            ),
+            _bloggerInfo(),
+            SizedBox(height: AppLayout.getHeight(8)),
+            Text(
+                "যাত্রা শুরুর ছয় বছরের মাথায় প্রথমবারের মতো শতভাগ অনলাইনে ভূমি ব্যবহারের ছাড়পত্র দিয়েছে অনলাইনে ভূমি ব্যবহারের ছাড়পত্র দিয়েছে রাজধানী উন্নয়ন কর্তৃপক্ষ (রাজউক)।"
+                    .substring(0, 100)),
             SizedBox(height: AppLayout.getHeight(8)),
             _blogInfolayout(),
           ],
@@ -36,15 +44,44 @@ Widget topReadedBlog() {
   );
 }
 
+_blogTitle() {
+  return Text("ব্লগ শিরোনাম এখানে", style: AppStyle.large_text,overflow: TextOverflow.ellipsis,);
+}
+
+_followButton() {
+  return SizedBox(
+      height: 24,
+      child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blue,
+          ),
+          onPressed: () {},
+          child: Text(
+            AppString.follow,
+            style: AppStyle.small_text.copyWith(color: Colors.white),
+          )));
+}
+
+_bloggerInfo() {
+  return Wrap(crossAxisAlignment: WrapCrossAlignment.center, children: [
+    _profilePicture(),
+    SizedBox(width: AppLayout.getWidth(8)),
+    Text("আরিফুল ইসলাম, 12/01/2023, 10:30am")
+  ]);
+}
+
 _blogInfolayout() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      _totalView(),
-      _totalLike(),
-      _totalComments(),
-      _totalShare(),
-    ],
+  return Container(
+    width: double.infinity,
+    child: Wrap(
+      alignment: WrapAlignment.spaceBetween,
+      children: [
+        _totalView(),
+        _totalLike(),
+        _totalComments(),
+        _totalShare(),
+      ],
+    ),
   );
 }
 
@@ -73,6 +110,18 @@ _totalShare() {
   return CustomIconButton(
     icondata: Icons.share,
     labelText: "12",
+  );
+}
+
+_profilePicture() {
+  return ClipOval(
+    child: SizedBox.fromSize(
+      size: Size.fromRadius(16), // Image radius
+      child: Image.asset(
+        "assets/pro_pic.png",
+        fit: BoxFit.fill,
+      ),
+    ),
   );
 }
 

@@ -19,4 +19,7 @@ class AppString {
   static const String forgot_pass_text = "পাসওয়ার্ড ভুলে গেছেন";
   static const String login = "লগইন";
   static const String sign_up = "নিবন্ধন করুন";
+  static const String read_more = "সম্পূর্ণ বই পড়ুন";
+  static const String important_link = "গুরুত্বপূর্ণ সেবাসমূহের লিংক";
+  static const String opinions = "মন্তব্য";
 }

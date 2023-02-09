@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:land_gov_flutter/utils/app_color.dart';
 import 'package:land_gov_flutter/utils/app_layout.dart';
 import 'package:land_gov_flutter/utils/app_style.dart';
 
 import '../utils/app_string.dart';
 
-class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppbarInner extends StatelessWidget implements PreferredSizeWidget {
   final String appbarTitle;
 
-  CustomAppbar({required this.appbarTitle});
+  CustomAppbarInner({required this.appbarTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +29,10 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
       ),
       leading: IconButton(
         icon: Icon(
-          Icons.menu,
+          Icons.arrow_back_ios,
           color: Colors.black,
         ),
-        onPressed: () => Scaffold.of(context).openDrawer(),
+        onPressed: () => Get.back(),
       ),
     );
   }

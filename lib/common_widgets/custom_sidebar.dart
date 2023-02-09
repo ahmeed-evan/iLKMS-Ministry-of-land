@@ -83,17 +83,12 @@ class CustomSideBar extends StatelessWidget {
   _bottomSection() {
     return Padding(
       padding: EdgeInsets.symmetric(
-          vertical: AppLayout.getHeight(40),
-          horizontal: AppLayout.getWidth(20)),
+        vertical: AppLayout.getHeight(40),
+       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _titleText(),
-          _enameJari(),
-          _landTax(),
-          _landRecord(),
-          _law(),
-          _helpLine(),
         ],
       ),
     );
